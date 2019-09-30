@@ -1,6 +1,9 @@
 package container;
 
 import container.pipeline.Pipeline;
+import exception.LifecycleException;
+
+import java.util.EventListener;
 
 /**
  * 描述:
@@ -48,5 +51,10 @@ public class DefaultContainer extends AbstractContainer {
     @Override
     public Pipeline getPipeline() {
         return pipeline;
+    }
+
+    @Override
+    protected void initInternal() throws LifecycleException {
+
     }
 }

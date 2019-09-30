@@ -1,6 +1,7 @@
 package container;
 
 import container.pipeline.Pipeline;
+import lifecycle.LifecycleBase;
 
 import java.util.HashMap;
 
@@ -10,7 +11,7 @@ import java.util.HashMap;
  * @author huang
  * @create 2019-09-25 5:15 PM
  */
-public abstract class AbstractContainer implements Container {
+public abstract class AbstractContainer extends LifecycleBase implements Container {
 
     protected HashMap<String, Container> children = new HashMap<>();
     protected Container parent;

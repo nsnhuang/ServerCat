@@ -29,6 +29,10 @@ public class NioSocketProcessor extends AbstractSocketProcessor {
         Response response = new Response();
 
         // 用适配器进行转化成Servlet对象
-        new DefaultAdapter(wrapper).service(request, response);
+//        new DefaultAdapter(wrapper).service(request, response);
+
+
+
+
     }
 }

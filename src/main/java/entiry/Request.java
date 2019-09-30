@@ -20,7 +20,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Slf4j
-public class Request {
+public class Request extends ServletRequest{
 
     RequestMethod method;
     private String[] path;

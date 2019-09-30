@@ -11,7 +11,7 @@ import java.util.List;
  * @author huang
  */
 @Slf4j
-public class Response {
+public class Response extends ServletResponse{
     private StringBuilder headerAppender;
     private List<Cookie> cookies;
     private List<Header> headers;

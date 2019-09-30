@@ -19,8 +19,8 @@ public class DefaultAdapter implements Adapter {
     @Override
     public void service(Request request, Response response) {
         // request、response对象的转换
-        ServletRequest servletRequest = new ServletRequest();
-        ServletResponse servletResponse = new ServletResponse();
+        ServletRequest servletRequest = request;
+        ServletResponse servletResponse = response;
 
         // 调用容器
         wrapper.getServer().getContext().getPipeline().getFirst().invoke(servletRequest, servletResponse);

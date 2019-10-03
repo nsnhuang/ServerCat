@@ -20,10 +20,10 @@ import java.util.Map;
 @Getter
 @Setter
 @Slf4j
-public class Request extends ServletRequest{
+public class Request {
 
     RequestMethod method;
-    private String[] path;
+    private String path;
     private Map<String, List<String>> params;
     private String version;
     private Map<String, List<String>> headers;
@@ -95,7 +95,7 @@ public class Request extends ServletRequest{
     }
 
     private void parsePath(String pa) {
-        path = pa.split("/");
+        path = pa;
     }
 
     private void parseHeaders(String[] lines) {

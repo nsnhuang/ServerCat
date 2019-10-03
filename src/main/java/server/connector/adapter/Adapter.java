@@ -1,8 +1,15 @@
 package server.connector.adapter;
 
+import com.sun.deploy.net.HttpRequest;
+import server.connector.protocolhandler.endpoint.poller.wrapper.NioSocketWrapper;
+import server.connector.protocolhandler.endpoint.poller.wrapper.Wrapper;
 import server.entiry.Request;
 import server.entiry.Response;
 import server.lifecycle.AbstractLifecycle;
+import servermc.DispatcherServlet;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 /**
  * 描述:
@@ -12,10 +19,23 @@ import server.lifecycle.AbstractLifecycle;
  */
 public class Adapter extends AbstractLifecycle {
 
-    public void service(Request request, Response response) {
-        // request、response对象的转换
+    private Wrapper wrapper;
 
+    public Adapter(NioSocketWrapper nioSocketWrapper) {
+        wrapper = nioSocketWrapper;
+    }
+
+    public void service(Request request, Response response) {
         // 调用容器
+        new DispatcherServlet().service(request, response);
+
+        try {
+            ByteBuffer[] buffer = response.getResponseByteBuffer();
+            wrapper.getClient().write(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

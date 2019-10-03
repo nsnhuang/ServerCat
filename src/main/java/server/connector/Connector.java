@@ -18,20 +18,16 @@ public class Connector extends AbstractLifecycle {
     @Override
     protected void initInternal() {
         this.protocolHandler = new ProtocolHandler();
-        this.adapter = new Adapter();
         protocolHandler.init();
-        adapter.init();
     }
 
     @Override
     protected void startInternal() {
         protocolHandler.start();
-        adapter.start();
     }
 
     @Override
     protected void stopInternal() {
         protocolHandler.stop();
-        adapter.stop();
     }
 }

@@ -1,11 +1,11 @@
 package server.connector.protocolhandler.processor;
 
 import server.connector.adapter.Adapter;
+import server.connector.protocolhandler.endpoint.poller.wrapper.NioSocketWrapper;
+import server.connector.protocolhandler.endpoint.poller.wrapper.Wrapper;
 import server.entiry.Request;
 import server.entiry.Response;
 import server.entiry.http.Http11Processor;
-import server.connector.protocolhandler.endpoint.poller.wrapper.NioSocketWrapper;
-import server.connector.protocolhandler.endpoint.poller.wrapper.Wrapper;
 
 /**
  * 描述:
@@ -28,7 +28,7 @@ public class NioProcessor extends AbstractProcessor {
         Request request = httpProcessor.process(nioSocketWrapper);
         Response response = new Response();
 
-        new Adapter().service(request, response);
+        new Adapter(nioSocketWrapper).service(request, response);
 
     }
 
